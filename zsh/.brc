@@ -1,0 +1,12 @@
+unsetopt EQUALS
+
+echo $fg[green] --- Sourcing additional rc files --- $fg[white]
+RC_DIR=$(dirname "$0")
+for f in `find $RC_DIR -iname "*.sh" -not -type d -not -iname "_*"`; do
+    echo "$fg[green][*]$fg[white] $f"
+    source $f
+done
+echo $fg[green] --- Done sourcing rc files --- $fg[white]
+
+# add hebrew layout (and toggle key binding)
+setxkbmap -option grp:alt_shift_toggle us,il
